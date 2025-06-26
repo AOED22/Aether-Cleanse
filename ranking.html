@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>Ranking - Aether Clanse</title>
+  <title>Ranking - Aether Cleanse</title>
   <style>
     body {
       background-image: url('isso.png');
@@ -128,14 +128,14 @@
       localStorage.setItem('aetherRanking', JSON.stringify(ranking));
     }
 
-    // Atualiza a lista do ranking na tela
+    
     function atualizarRanking() {
       const ranking = carregarRanking();
 
-      // Ordena por pontuação decrescente
+      
       ranking.sort((a, b) => b.pontos - a.pontos);
 
-      // Limita aos top 100
+      
       const topRanking = ranking.slice(0, 100);
 
       rankingList.innerHTML = '';
@@ -146,7 +146,6 @@
       }
     }
 
-    // Evento para salvar pontuação
     btnSalvar.addEventListener('click', () => {
       const nome = inputNome.value.trim();
       const pontos = parseInt(inputPontos.value);

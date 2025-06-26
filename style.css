@@ -59,6 +59,7 @@
     background-color: #ffd84d;
 }
 
+
 /* Nave animada */
 .ship {
     width: 60px;
@@ -240,7 +241,6 @@ p {
     border-radius: 15px;             
     overflow: hidden;                /* para não vazar elementos */
 }
-
 
 
 .intro-content h1 {
