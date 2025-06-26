@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aether Clanse</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo:ital,wght@0,100..900;1,100..900&family=Kode+Mono:wght@400..700&family=Orbitron:wght@400..900&family=Poetsen+One&family=Zen+Dots&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- TELA DE LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <h2>Aether Clanse</h2>
+    <input type="text" id="username" placeholder="Usuário" autocomplete="username" />
+    <input type="password" id="password" placeholder="Senha" autocomplete="current-password" />
+    <button onclick="handleLogin()">Entrar / Cadastrar</button>
+    <div id="login-message"></div>
+  </div>
+  <div class="ship" id="ship"></div>
+</div>
+
+<!-- SITE ESCONDIDO ATÉ LOGIN -->
+<section id="fundo" style="display:none;">
+  <div class="fundo">
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="logo.png" alt="Logo Aether Clanse" />
+        </div>
+        <div class="menu">
+          <button onclick="scrollToSection('sobre-o-jogo')">sobre-o-jogo</button>
+          <button onclick="scrollToSection('ods')">ODS</button>
+          <button onclick="scrollToSection('Notícias')">Notícias</button>
+          <button onclick="scrollToSection('Criadores')">Criadores</button>
+          <button onclick="location.href='ranking.html'">Ranking</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Seção de Introdução -->
+      <section id="intro">
+        <div class="intro-content">
+          <h1>Bem-vindo ao Aether Clanse!</h1>
+        </div>
+      </section>
+
+      <!-- Sobre o Jogo -->  
+      <section id="jojo">
+        <div class="jojo">
+          <section id="sobre-o-jogo">
+            <div class="container">
+              <h2>Sobre o Jogo</h2>
+              <div class="texto-sobre-jogo">
+                <div class="esquerda">
+                  <p>
+                    Em uma Terra devastada pelos gases poluentes, o jogador irá controlar o piloto Axel Nitro e a sua nave EcoFùria. Junto a eles, vocês irão erradicar os gases poluentes e as empresas malfeitoras que não querem parar de poluir. Destrua eles e faça o máximo de pontos possíveis com a quantidade de vidas que você tem.
+                  </p>
+                </div>
+                <div class="direita">
+                  <p>
+                    Resumo do jogo: Um shoot 'em up onde você terá de combater os gases poluentes na atmosfera com sua nave despoluente para garantir que as condições climáticas não se agravem no planeta Terra.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      
+       <section id="ods">
+        <div class="container">
+          <h2>ODS</h2>
+          <div class="texto-sobre-jogo">
+            <div class="esquerda">
+              <p>
+                O Aether Clanse se inspira nos Objetivos de Desenvolvimento Sustentável, focando principalmente na ODS 13 – Ação Contra a Mudança Global do Clima. O jogador combate a poluição com sua nave, trazendo consciência ambiental de forma divertida e engajada.
+              </p>
+            </div>
+            <div class="direita">
+              <img src="ODS.png" alt="ODS 13 - Ação Climática" style="max-width: 100%; border-radius: 15px;" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Notícias -->
+      <section id="Notícias">
+        <div class="container">
+          <h2>Notícias</h2>
+          <p>Serão adicionadas ao decorrer do jogo.</p>
+        </div>
+      </section>
+
+      <!-- Criadores -->
+      <section id="kaameehaaaaaaaameeeeeraaaaaaaaaaaa">
+        <div class="kaameehaaaaaaaameeeeeraaaaaaaaaaaa">
+      <section id="Criadores">
+        <div class="container">
+          <h2>Criadores</h2>
+          <div class="criadores-blocos">
+            <!-- Cauã -->
+            <div class="criador-bloco">
+              <img src="peverari.jpeg" alt="Cauã Pevarari" />
+              <div class="criador-info">
+                <h3>Cauã Pevarari</h3>
+                <p>Programador Principal</p>
+                <p>Responsável pela maior parte da arquitetura do jogo, sistemas e combates.</p>
+              </div>
+            </div>
+            <!-- Pedro -->
+            <div class="criador-bloco">
+              <img src="Pedro.png" alt="Pedro" />
+              <div class="criador-info">
+                <h3>Pedro</h3>
+                <p>Programador Geral</p>
+                <p>Auxilia em todas as frentes de código e fez o menu todo do jogo.</p>
+              </div>
+            </div>
+            <!-- Arthur -->
+            <div class="criador-bloco">
+              <img src="Arthur-novo.png" alt="Arthur" />
+              <div class="criador-info">
+                <h3>Arthur</h3>
+                <p>Game Designer</p>
+                <p>Idealizador do jogo todo, além de ser autista.</p>
+              </div>
+            </div>
+            <!-- João -->
+            <div class="criador-bloco">
+              <img src="janve.jpg" alt="João" />
+              <div class="criador-info">
+                <h3>João</h3>
+                <p>Artista</p>
+                <p>Responsável pela maior parte visuais, sprites e ambientação do jogo.</p>
+              </div>
+            </div>
+            <!-- Gabriel -->
+            <div class="criador-bloco">
+              <img src="Gabriel.jpg" alt="Gabriel" />
+              <div class="criador-info">
+                <h3>Gabriel</h3>
+                <p>Criador do Site</p>
+                <p>Fez o site.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; NAVE Rio - Rio de Janeiro, RJ - 2025 - Oficina Integrada 2, Aether Clanse.</p>
+      </div>
+    </footer>
+  </div>
+</section>
+</div>
+</section>
+
+<!-- Scripts -->
+<script>
+  function showMessage(text, type) {
+    const msg = document.getElementById('login-message');
+    msg.textContent = text;
+    msg.className = ''; // limpa classes anteriores
+    msg.classList.add(type); // adiciona classe "successo" ou "error"
+  }
+
+  function showMainContentWithAnimation() {
+    const ship = document.getElementById('ship');
+    ship.style.opacity = '1';
+    ship.classList.add('launch');
+
+    ship.addEventListener(
+      'animationend',
+      () => {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('fundo').style.display = 'block';
+        document.body.style.overflow = 'auto';
+        ship.classList.remove('launch');
+        ship.style.opacity = '0';
+      },
+      { once: true }
+    );
+  }
+
+  function handleLogin() {
+    const user = document.getElementById('username').value.trim();
+    const pass = document.getElementById('password').value.trim();
+
+    if (!user || !pass) {
+      showMessage('Preencha usuário e senha.', 'error');
+      return;
+    }
+
+    try {
+      const savedPass = localStorage.getItem('user_' + user);
+
+      if (savedPass === null) {
+        // Novo usuário
+        localStorage.setItem('user_' + user, pass);
+        sessionStorage.setItem('loggedIn', 'true');
+        showMessage('Usuário criado com sucesso! Você está logado.', 'successo');
+        showMainContentWithAnimation();
+      } else if (savedPass === pass) {
+        // Login OK
+        sessionStorage.setItem('loggedIn', 'true');
+        showMessage('Login bem-sucedido! Bem-vindo, ' + user + '.', 'successo');
+        showMainContentWithAnimation();
+      } else {
+        showMessage('Senha incorreta.', 'error');
+      }
+    } catch (e) {
+      alert('Erro ao acessar armazenamento local. Habilite cookies/localStorage no navegador.');
+      console.error('Erro de armazenamento:', e);
+    }
+  }
+
+  // Enter também faz login
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  });
+
+  // Verifica se já está logado ao carregar a página
+  window.addEventListener('DOMContentLoaded', () => {
+    const loggedIn = sessionStorage.getItem('loggedIn');
+    if (loggedIn === 'true') {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('fundo').style.display = 'block';
+      document.body.style.overflow = 'auto';
+    }
+
+    const loginBtn = document.getElementById('login-button');
+    if (loginBtn) {
+      loginBtn.addEventListener('click', handleLogin);
+    }
+  });
+
+  function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

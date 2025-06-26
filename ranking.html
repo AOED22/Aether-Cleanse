@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ranking - Aether Clanse</title>
+  <style>
+    body {
+      background-image: url('smite.png');
+      background-size: contain;
+      background-position: 100% 0%;
+      background-repeat: repeat;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding-top: 60px;
+    }
+    .ranking-container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 15px;
+      box-sizing: border-box;
+      transition: 0.3s ease;
+      border: 3px solid cyan;
+    }
+    h1 {
+      color: yellow;
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="number"] {
+      padding: 10px;
+      margin: 8px 5px;
+      width: 140px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+    }
+    button {
+      padding: 10px 30px;
+      margin-top: 15px;
+      font-size: 1rem;
+      background-color: #00ffff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      margin-left: 10px;
+    }
+    button:hover {
+      background-color: cyan;
+    }
+    ol {
+      text-align: left;
+      padding-left: 40px;
+      margin-top: 25px;
+    }
+    ol li {
+      margin: 5px 0;
+      font-family: "Kode Mono", monospace;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+    #botao-alterar {
+      margin-top: 25px;
+      background-color: #f2b705;
+      color: black;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 10px 30px;
+      transition: background-color 0.3s;
+    }
+    #botao-alterar:hover {
+      background-color: #ffd84d;
+    }
+  </style>
+</head>
+<body>
+  <div class="ranking-container" id="ranking-container">
+    <h1>Ranking dos Jogadores</h1>
+
+    <div>
+      <input type="text" id="inputNome" placeholder="Seu nome" maxlength="20" />
+      <input type="number" id="inputPontos" placeholder="Sua pontuação" min="0" />
+      <button id="btnSalvar">Salvar Pontuação</button>
+    </div>
+
+    <button id="botao-alterar">Alterar Visual</button>
+
+    <ol id="ranking-list"></ol>
+
+    <button onclick="window.location.href='index.html'">⬅ Voltar ao Site</button>
+  </div>
+
+  <script>
+    const rankingList = document.getElementById('ranking-list');
+    const inputNome = document.getElementById('inputNome');
+    const inputPontos = document.getElementById('inputPontos');
+    const btnSalvar = document.getElementById('btnSalvar');
+    const botaoAlterar = document.getElementById('botao-alterar');
+    const container = document.getElementById('ranking-container');
+
+    // Cores para o botão alterar visual
+    const cores = [
+      "rgba(0, 0, 80, 0.8)",      // Azul escuro
+      "rgba(80, 0, 0, 0.8)",      // Vermelho escuro
+      "rgba(0, 80, 0, 0.8)",      // Verde escuro
+      "rgba(80, 80, 0, 0.8)",     // Amarelo escuro
+      "rgba(80, 0, 80, 0.8)"      // Roxo escuro
+    ];
+
+    // Carregar ranking do localStorage
+    function carregarRanking() {
+      const rankingJSON = localStorage.getItem('aetherRanking');
+      if (rankingJSON) {
+        return JSON.parse(rankingJSON);
+      }
+      return [];
+    }
+
+    // Salvar ranking no localStorage
+    function salvarRanking(ranking) {
+      localStorage.setItem('aetherRanking', JSON.stringify(ranking));
+    }
+
+    // Atualiza a lista do ranking na tela
+    function atualizarRanking() {
+      const ranking = carregarRanking();
+
+      // Ordena por pontuação decrescente
+      ranking.sort((a, b) => b.pontos - a.pontos);
+
+      // Limita aos top 100
+      const topRanking = ranking.slice(0, 100);
+
+      rankingList.innerHTML = '';
+      for (const jogador of topRanking) {
+        const li = document.createElement('li');
+        li.textContent = `${jogador.nome} - ${jogador.pontos} pontos`;
+        rankingList.appendChild(li);
+      }
+    }
+
+    // Evento para salvar pontuação
+    btnSalvar.addEventListener('click', () => {
+      const nome = inputNome.value.trim();
+      const pontos = parseInt(inputPontos.value);
+
+      if (!nome) {
+        alert('Digite seu nome.');
+        return;
+      }
+      if (isNaN(pontos) || pontos < 0) {
+        alert('Digite uma pontuação válida.');
+        return;
+      }
+
+      const ranking = carregarRanking();
+
+      // Se já existe o jogador, atualiza pontuação se for maior
+      const indexExistente = ranking.findIndex(j => j.nome.toLowerCase() === nome.toLowerCase());
+      if (indexExistente !== -1) {
+        if (pontos > ranking[indexExistente].pontos) {
+          ranking[indexExistente].pontos = pontos;
+        } else {
+          alert('Sua pontuação não é maior que a anterior.');
+          return;
+        }
+      } else {
+        ranking.push({ nome, pontos });
+      }
+
+      salvarRanking(ranking);
+      atualizarRanking();
+
+      // Limpa o campo pontuação para próxima entrada
+      inputPontos.value = '';
+    });
+
+    // Evento para alterar visual
+    botaoAlterar.addEventListener('click', () => {
+      const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+      container.style.backgroundColor = corAleatoria;
+      container.style.border = "3px solid cyan";
+      container.style.transform = "scale(1.02)";
+      setTimeout(() => {
+        container.style.transform = "scale(1)";
+      }, 300);
+    });
+
+    window.onload = () => {
+      atualizarRanking();
+   
+    };
+  </script>
+</body>
+</html>
